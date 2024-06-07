@@ -53,5 +53,49 @@
              </li>
             <?php endforeach; ?>
        </ul>
+
+       <?php 
+         $movies = [
+             [
+                'name' => 'Yearada lij',
+                'released' => 2000
+             ],
+             [
+                'name' => 'Aman',
+                'released' => 2002
+             ],
+             [
+                'name' => 'Kebron',
+                'released' => 2000
+             ],
+             [
+                'name' => 'Rebuni',
+                'released' => 2001
+             ],
+            ];
+
+         $filteredMovies = array_filter($movies, function($movie){
+               return $movie['released'] <= 2000;
+         });
+       ?>
+
+            <ul>
+                <?php foreach($filteredMovies as $movie) :?>
+                     <li><?= $movie['name']?> </li>
+                <?php endforeach;?>    
+            </ul>
+
+      <?php
+        function filterMovie($movies){
+             $filterMovie = [];
+             foreach($movies as $movie){
+                if($movie['released'] <= 2000){
+                    $filterMovie[] = $movie;
+                }
+                }
+            return $filterMovie;
+        }
+      
+      ?>      
 </body>
 </html>
